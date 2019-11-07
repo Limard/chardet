@@ -1,7 +1,6 @@
-package chardet_test
+package chardet
 
 import (
-	"github.com/saintfish/chardet"
 	"io"
 	"os"
 	"path/filepath"
@@ -25,14 +24,14 @@ func TestDetector(t *testing.T) {
 		{"8859_1_fr.html", true, "ISO-8859-1", "fr"},
 		{"8859_1_pt.html", true, "ISO-8859-1", "pt"},
 		{"shift_jis.html", true, "Shift_JIS", "ja"},
-		{"gb18030.html", true, "GB-18030", "zh"},
+		{"gb18030.html", true, "GB18030", "zh"},
 		{"euc_jp.html", true, "EUC-JP", "ja"},
 		{"euc_kr.html", true, "EUC-KR", "ko"},
 		{"big5.html", true, "Big5", "zh"},
 	}
 
-	textDetector := chardet.NewTextDetector()
-	htmlDetector := chardet.NewHtmlDetector()
+	textDetector := NewTextDetector()
+	htmlDetector := NewHtmlDetector()
 	buffer := make([]byte, 32<<10)
 	for _, d := range data {
 		f, err := os.Open(filepath.Join("testdata", d.File))

@@ -1,8 +1,7 @@
-package chardet_test
+package chardet
 
 import (
 	"fmt"
-	"github.com/saintfish/chardet"
 )
 
 var (
@@ -14,7 +13,7 @@ var (
 )
 
 func ExampleTextDetector() {
-	detector := chardet.NewTextDetector()
+	detector := NewTextDetector()
 	result, err := detector.DetectBest(zh_gb18030_text)
 	if err == nil {
 		fmt.Printf(
@@ -23,5 +22,5 @@ func ExampleTextDetector() {
 			result.Language)
 	}
 	// Output:
-	// Detected charset is GB-18030, language is zh
+	// Detected charset is GB18030, language is zh
 }
